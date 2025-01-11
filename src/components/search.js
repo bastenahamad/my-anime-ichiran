@@ -8,22 +8,31 @@ function Search() {
   // const encodedQuery = encodeURIComponent(searchQuery);
   const encodedQuery = encodeURIComponent(searchQuery);
   const searchURL = "https://api.jikan.moe/v4/anime?q=" + encodedQuery + "&limit=18&order_by=popularity&sort=asc";
-
+  console.log(searchURL);
+  
   const [searchAnimes, setSearchAnimes] = useState([]);
 
   const searchAnime = () => {
     fetch(searchURL)
       .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         return response.json();
       })
       .then((data) => {
         setSearchAnimes(data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   };
-  useEffect(() => {
-    searchAnime();
-  }, []);
 
+  useEffect(() => {
+    if (searchQuery) {
+      searchAnime();
+    }
+  },);
   return (
     <div>
       <div className="ongoing-anime-nav">
