@@ -6,10 +6,8 @@ function Search() {
   const location = useLocation();
   const searchQuery = new URLSearchParams(location.search).get("q");
   // const encodedQuery = encodeURIComponent(searchQuery);
-  const encodedQuery = encodeURIComponent(searchQuery);
-  const searchURL = "https://api.jikan.moe/v4/anime?q=" + encodedQuery + "&limit=18&order_by=popularity&sort=asc";
-  console.log(searchURL);
-  
+  const searchURL = "https://api.jikan.moe/v4/anime?q=" + searchQuery + "&limit=18&order_by=popularity&sort=asc";
+
   const [searchAnimes, setSearchAnimes] = useState([]);
 
   const searchAnime = () => {
