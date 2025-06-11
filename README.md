@@ -1,7 +1,7 @@
 # My Anime Ichiran
+# Deploy Link: https://magnificent-moonbeam-4737b3.netlify.app/
 My Anime Ichiran is a React application that fetches data from the Jikan API, 
 In the project directory, you can run:
-
 ## Installation
 
 To run this project locally, follow these steps:
